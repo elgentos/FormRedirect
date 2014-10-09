@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Elgentos_Formredirect>
+            <version>0.1.0</version>
+        </Elgentos_Formredirect>
+    </modules>
+    <frontend>
+        <routers>
+            <contacts>
+                <use>standard</use>
+                <args>
+                    <module>Elgentos_Formredirect</module>
+                </args>
+            </contacts>
+        </routers>
+        <events>
+            <cms_page_render>
+                <observers>
+                    <formredirect>
+                        <type>singleton</type>
+                        <class>Elgentos_Formredirect_Model_Header</class>
+                        <method>add</method>
+                    </formredirect>
+                </observers>
+            </cms_page_render>
+        </events>
+    </frontend>
+
+    <global>
+        <page>
+
+        </page>
+        <resources>
+            <formredirect_setup>
+                <setup>
+                    <module>Elgentos_Formredirect</module>
+                    <class>Elgentos_Formredirect_Model_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </formredirect_setup>
+            <formredirect_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </formredirect_write>
+            <formredirect_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </formredirect_read>
+        </resources>
+        <blocks>
+            <formredirect>
+                <class>Elgentos_Formredirect_Block</class>
+            </formredirect>
+        </blocks>
+
+    </global>
+
+    <default>
+        <formredirect>
+            <general>
+                <enabled>1</enabled>
+            </general>
+             <useformredirect>
+                <enabled>1</enabled>
+            </useformredirect>
+        </formredirect>
+    </default>
+
+</config>
